@@ -1,28 +1,33 @@
 import { useNavigate } from "react-router-dom";
 import HoverLinks from "./HoverLinks";
 import { Button } from "@/components/ui/button";
-import { LOGIN, SIGNUP } from "../../Router/router";
+import { LOGIN, SIGNUP, ABOUT } from "../../Router/router";
 
 const links = [
   {
     name: "Home",
     links: ['intro','testimonial','latest'],
+    route: "/",
   },
   {
     name: "Shop",
     links: [],
+    route: "/shop",
   },
   {
     name: "Blog",
     links: [],
+    route: "/blog",
   },
   {
     name: "About",
     links: [],
+    route: "/about",
   },
   {
     name: "Contact-US",
     links: [],
+    route: "/contact-us",
   },
 ];
 
@@ -42,8 +47,9 @@ const NavBar = () => {
           <li
             key={index}
             className="cursor-pointer text-[#F2F2F2] hover:underline transition-all duration-300"
+            onClick={() => link.route && handleUrl(link.route)}
           >
-            {<HoverLinks title={link.name} links={link.links} />}
+            <HoverLinks title={link.name} links={link.links} />
           </li>
         ))}
       </ul>
